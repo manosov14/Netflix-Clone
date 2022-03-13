@@ -8,7 +8,10 @@
 import UIKit
 
 class CollectionViewTableViewCell: UITableViewCell {
-
+    static let identifier = "CollectionViewTableViewCell"
+    
+    private var titles: [Title] = []
+    
     /// Создаем экземпляр collectionView
     private let collectionView: UICollectionView = {
         
@@ -18,12 +21,11 @@ class CollectionViewTableViewCell: UITableViewCell {
         
         let collectionView = UICollectionView(frame: .zero , collectionViewLayout: layout) // Создаем коллекцию c указание слоя к которому она привязана
         
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell") // Регистрируемся в ячейке. Идентификатор произвольный.
+        collectionView.register(TitileCollectionViewCell.self, forCellWithReuseIdentifier: TitileCollectionViewCell.identifier) // регистрируем кастомную ячейку в которую будет подгружаться изображение
         return collectionView
         
     }()
     
-    static let identifier = "CollectionViewTableViewCell"
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -33,7 +35,7 @@ class CollectionViewTableViewCell: UITableViewCell {
         collectionView.delegate = self
         collectionView.dataSource = self
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError()
     }
@@ -42,21 +44,31 @@ class CollectionViewTableViewCell: UITableViewCell {
         super.layoutSubviews()
         collectionView.frame = contentView.bounds
     }
+    
+    public func configure(with titles: [Title]) {
+        self.titles = titles
+        DispatchQueue.main.async { [weak self] in
+            self?.collectionView.reloadData()
+        }
+    }
 }
 
 extension CollectionViewTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        titles.count
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        cell.backgroundColor = .green
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TitileCollectionViewCell.identifier, for: indexPath) as? TitileCollectionViewCell else { return UICollectionViewCell()
+        }
+        guard let model = titles[indexPath.row].poster_path else { return UICollectionViewCell() }
+        cell.configure(with: model)
         return cell
+        
     }
     
-   
+    
 }

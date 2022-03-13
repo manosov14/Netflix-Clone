@@ -32,7 +32,6 @@ class APICaller {
             do {
                 
                 let results = try JSONDecoder().decode(TrendingTitleResponse.self, from: data)
-                print(results)
                 
                 completion(.success(results.results))
                 
@@ -53,7 +52,8 @@ class APICaller {
                 
                 let results = try JSONDecoder().decode(TrendingTitleResponse.self, from: data)
                 
-                print(results)
+                completion(.success(results.results))
+                
             } catch {
                 completion(.failure(error))
             }
@@ -70,7 +70,7 @@ class APICaller {
             do {
                 let results = try JSONDecoder().decode(TrendingTitleResponse.self, from: data)
                 
-                print(results)
+                completion(.success(results.results))
                 
             } catch {
                 completion(.failure(error))
@@ -91,7 +91,7 @@ class APICaller {
             do {
                 
                 let results = try JSONDecoder().decode(TrendingTitleResponse.self, from: data)
-                print(results)
+                completion(.success(results.results))
                 
             } catch {
                 
@@ -111,7 +111,7 @@ class APICaller {
             do {
                 
                 let results = try JSONDecoder().decode(TrendingTitleResponse.self, from: data)
-                print(results)
+                completion(.success(results.results))
                 
             } catch {
                 
