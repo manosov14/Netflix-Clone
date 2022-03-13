@@ -21,7 +21,7 @@ class APICaller {
     static let shared = APICaller()
     
     
-    func getTrendingMovies(completion: @escaping (Result<[Movie], Error>) -> Void) {
+    func getTrendingMovies(completion: @escaping (Result<[Title], Error>) -> Void) {
         
         guard let url = URL(string: "\(constants.baseURL)/3/trending/movie/day?api_key=\(constants.API_KEY)") else { return }
         
@@ -31,7 +31,7 @@ class APICaller {
             
             do {
                 
-                let results = try JSONDecoder().decode(TrendingMoviesResponse.self, from: data)
+                let results = try JSONDecoder().decode(TrendingTitleResponse.self, from: data)
                 print(results)
                 
                 completion(.success(results.results))
@@ -44,43 +44,43 @@ class APICaller {
     }
     
     
-    func getTrendingsTvs(completion: @escaping (Result<[Tv], Error>) -> Void) {
+    func getTrendingsTvs(completion: @escaping (Result<[Title], Error>) -> Void) {
         guard let url = URL(string: "\(constants.baseURL)/3/trending/tv/day?api_key=\(constants.API_KEY)") else { return }
         let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, _, error in
             guard let data = data, error == nil else { return }
             
             do {
                 
-                let results = try JSONDecoder().decode(TrendingTvResponse.self, from: data)
+                let results = try JSONDecoder().decode(TrendingTitleResponse.self, from: data)
                 
                 print(results)
             } catch {
-                print(error.localizedDescription)
+                completion(.failure(error))
             }
         }
         task.resume()
     }
     
-    func getUpCommingMovies(completion: @escaping (Result<[Movie], Error>) -> Void) {
+    func getUpCommingMovies(completion: @escaping (Result<[Title], Error>) -> Void) {
         guard let url = URL(string: "\(constants.baseURL)/3/movie/upcoming?api_key=\(constants.API_KEY)&language=en-US&page=1") else { return }
         
         let task = URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data = data, error == nil else { return }
             
             do {
-                let results = try JSONDecoder().decode(TrendingMoviesResponse.self, from: data)
+                let results = try JSONDecoder().decode(TrendingTitleResponse.self, from: data)
                 
                 print(results)
                 
             } catch {
-                print(error.localizedDescription)
+                completion(.failure(error))
             }
         }
         task.resume()
     }
     
     
-    func getPopular(completion: @escaping (Result<[Movie], Error>) -> Void) {
+    func getPopular(completion: @escaping (Result<[Title], Error>) -> Void) {
         
         guard let url = URL(string: "\(constants.baseURL)/3/movie/popular?api_key=\(constants.API_KEY)&language=en-US&page=1") else {return}
         
@@ -90,19 +90,19 @@ class APICaller {
             
             do {
                 
-                let results = try JSONDecoder().decode(TrendingMoviesResponse.self, from: data)
+                let results = try JSONDecoder().decode(TrendingTitleResponse.self, from: data)
                 print(results)
                 
             } catch {
                 
-                print(error.localizedDescription)
+                completion(.failure(error))
                 
             }
         }
         task.resume()
     }
     
-   func getTopRated(completion: @escaping (Result<[Movie], Error>) -> Void) {
+   func getTopRated(completion: @escaping (Result<[Title], Error>) -> Void) {
         guard let url = URL(string: "\(constants.baseURL)/3/movie/top_rated?api_key=\(constants.API_KEY)&language=en-US&page=1") else { return }
         let task = URLSession.shared.dataTask(with: url) { data, _, error in
             
@@ -110,12 +110,12 @@ class APICaller {
             
             do {
                 
-                let results = try JSONDecoder().decode(TrendingMoviesResponse.self, from: data)
+                let results = try JSONDecoder().decode(TrendingTitleResponse.self, from: data)
                 print(results)
                 
             } catch {
                 
-                print(error.localizedDescription)
+                completion(.failure(error))
                 
             }
         }
