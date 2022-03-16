@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8708173F27E144C10015D5CE /*  TitleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708173E27E144C10015D5CE /*  TitleViewModel.swift */; };
 		8756B01827C0B4B800097995 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8756B01727C0B4B800097995 /* AppDelegate.swift */; };
 		8756B01A27C0B4B800097995 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8756B01927C0B4B800097995 /* SceneDelegate.swift */; };
 		8756B01C27C0B4B800097995 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8756B01B27C0B4B800097995 /* MainTabBarViewController.swift */; };
@@ -24,9 +25,11 @@
 		87FCFF2F27DDA79A0064E76C /* TitileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FCFF2E27DDA79A0064E76C /* TitileCollectionViewCell.swift */; };
 		87FCFF3227DDF72A0064E76C /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 87FCFF3127DDF72A0064E76C /* SDWebImage */; };
 		87FCFF3427DDF72A0064E76C /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 87FCFF3327DDF72A0064E76C /* SDWebImageMapKit */; };
+		87FCFF3627DFC6720064E76C /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FCFF3527DFC6720064E76C /* TitleTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8708173E27E144C10015D5CE /*  TitleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " TitleViewModel.swift"; sourceTree = "<group>"; };
 		8756B01427C0B4B800097995 /* Netflix Clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Netflix Clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8756B01727C0B4B800097995 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8756B01927C0B4B800097995 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -44,6 +47,7 @@
 		87A78F1E27D4CB9600020023 /* Extenshions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extenshions.swift; sourceTree = "<group>"; };
 		87DAD36227C6C22100AB806B /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 		87FCFF2E27DDA79A0064E76C /* TitileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitileCollectionViewCell.swift; sourceTree = "<group>"; };
+		87FCFF3527DFC6720064E76C /* TitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +115,7 @@
 				8779833C27C1619C005856A8 /* CollectionViewTableViewCell.swift */,
 				8779833E27C2121E005856A8 /* HeroHeaderUIView.swift */,
 				87FCFF2E27DDA79A0064E76C /* TitileCollectionViewCell.swift */,
+				87FCFF3527DFC6720064E76C /* TitleTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -118,6 +123,7 @@
 		8779833827C160AA005856A8 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				8708173E27E144C10015D5CE /*  TitleViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -228,8 +234,10 @@
 				8779833D27C1619C005856A8 /* CollectionViewTableViewCell.swift in Sources */,
 				87DAD36327C6C22100AB806B /* APICaller.swift in Sources */,
 				87A78F1F27D4CB9600020023 /* Extenshions.swift in Sources */,
+				87FCFF3627DFC6720064E76C /* TitleTableViewCell.swift in Sources */,
 				8779833F27C2121E005856A8 /* HeroHeaderUIView.swift in Sources */,
 				87FCFF2F27DDA79A0064E76C /* TitileCollectionViewCell.swift in Sources */,
+				8708173F27E144C10015D5CE /*  TitleViewModel.swift in Sources */,
 				8756B03327C0BFA700097995 /* DownloadsViewController.swift in Sources */,
 				8756B01827C0B4B800097995 /* AppDelegate.swift in Sources */,
 				8756B01A27C0B4B800097995 /* SceneDelegate.swift in Sources */,

@@ -25,12 +25,10 @@ class HomeViewController: UIViewController {
         "Top Rated"
     ]
     
-    
-    
     private let homeFeedTable: UITableView = {
         
-        let table = UITableView(frame: .zero, style: .grouped)  // Создание экземпляра класса
-        table.register(CollectionViewTableViewCell.self, forCellReuseIdentifier: CollectionViewTableViewCell.identifier) // Регистрация созданного экземпляра
+        let table = UITableView(frame: .zero, style: .grouped)
+        table.register(CollectionViewTableViewCell.self, forCellReuseIdentifier: CollectionViewTableViewCell.identifier)
         return table
         
     }()
@@ -42,7 +40,6 @@ class HomeViewController: UIViewController {
         view.addSubview(homeFeedTable)
         homeFeedTable.delegate = self
         homeFeedTable.dataSource = self
-        
         configureNavBar()
         
         let headerView = HeroHeaderUIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 450))
@@ -55,8 +52,6 @@ class HomeViewController: UIViewController {
         super.viewDidLayoutSubviews()
         homeFeedTable.frame = view.bounds
     }
-    
-    
     
     private func configureNavBar() {
         var image = UIImage(named: "netflixLogo")
@@ -90,7 +85,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         switch indexPath.section {
-            
         case Sections.TrendingMovies.rawValue:
             APICaller.shared.getTrendingMovies { result in
                 switch result {
