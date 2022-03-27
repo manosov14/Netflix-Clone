@@ -21,7 +21,7 @@ class CollectionViewTableViewCell: UITableViewCell {
         
         let collectionView = UICollectionView(frame: .zero , collectionViewLayout: layout) // Создаем коллекцию c указание слоя к которому она привязана
         
-        collectionView.register(TitileCollectionViewCell.self, forCellWithReuseIdentifier: TitileCollectionViewCell.identifier) // регистрируем кастомную ячейку в которую будет подгружаться изображение
+        collectionView.register(TitleCollectionViewCell.self, forCellWithReuseIdentifier: TitleCollectionViewCell.identifier) // регистрируем кастомную ячейку в которую будет подгружаться изображение
         return collectionView
         
     }()
@@ -62,7 +62,7 @@ extension CollectionViewTableViewCell: UICollectionViewDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TitileCollectionViewCell.identifier, for: indexPath) as? TitileCollectionViewCell else { return UICollectionViewCell()
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TitleCollectionViewCell.identifier, for: indexPath) as? TitleCollectionViewCell else { return UICollectionViewCell()
         }
         guard let model = titles[indexPath.row].poster_path else { return UICollectionViewCell() }
         cell.configure(with: model)

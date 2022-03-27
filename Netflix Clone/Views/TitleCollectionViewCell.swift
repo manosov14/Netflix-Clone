@@ -9,7 +9,7 @@ import UIKit
 import SDWebImage
 
 
-class TitileCollectionViewCell: UICollectionViewCell {
+class TitleCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "TitileCollectionViewCell"
     
