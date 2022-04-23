@@ -106,7 +106,7 @@ class APICaller {
     
    func getTopRated(completion: @escaping (Result<[Title], Error>) -> Void) {
         guard let url = URL(string: "\(constants.baseURL)/3/movie/top_rated?api_key=\(constants.API_KEY)&language=en-US&page=1") else { return }
-        let task = URLSession.shared.dataTask(with: url) { data, _, error in
+       let task = URLSession.shared.dataTask(with: url) { data, _, error in
             
             guard let data = data, error == nil else { return }
             
@@ -128,18 +128,15 @@ class APICaller {
         
         guard let url = URL(string: "\(constants.baseURL)/3/discover/movie?api_key=\(constants.API_KEY)&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate") else { return }
                
-        print(url)
         let task = URLSession.shared.dataTask(with: url) { data, _, error in
             
             guard let data = data, error == nil else { return }
             
             do {
-                
                 let results = try JSONDecoder().decode(TrendingTitleResponse.self, from: data)
                 completion(.success(results.results))
                 
             } catch {
-                
                 completion(.failure(error))
                 
             }
@@ -182,13 +179,12 @@ class APICaller {
         guard let url = URL(string: "\(constants.youTubeBaseUrl)?q=\(query)&key=\(constants.youTubeAPI_KEY)") else {
             return
         }
-        print(url)
+
         let task = URLSession.shared.dataTask(with: url) { data, _, error in
             
             guard let data = data, error == nil else { return }
             
             do {
-                
                 let results = try JSONDecoder().decode(YouTubeSearchResponse.self, from: data)
                 completion(.success(results.items[0]))
                 
@@ -200,6 +196,4 @@ class APICaller {
         }
        task.resume()
     }
-    
-    
 }
